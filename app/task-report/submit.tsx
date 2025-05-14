@@ -1,21 +1,20 @@
 import TextField from "@/components/text-field";
+import getCurrentLocation from "@/lib/location";
+import { addReport, readProductsByTaskId } from "@/lib/reportTaskService";
 import { Product } from "@/types";
+import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
+  Alert,
+  ScrollView,
   StyleSheet,
-  View,
   Text,
   TouchableOpacity,
-  ScrollView,
-  Alert,
+  View,
 } from "react-native";
 import ProductSection from "../../components/products";
-import { Ionicons } from "@expo/vector-icons";
 import ProductSelectionModal from "../../components/products-modal";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { addReport, readProductsByTaskId } from "@/lib/reportTaskService";
-import { readProductOptions } from "@/lib/productService";
-import getCurrentLocation from "@/lib/getLocation";
 
 export default function SubmitReport() {
   const [recipient, setRecipient] = useState("");

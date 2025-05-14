@@ -1,7 +1,7 @@
 import PickerField from "@/components/picker-field";
 import TextField from "@/components/text-field";
 import { readCustomerById } from "@/lib/customerService";
-import getCurrentLocation from "@/lib/getLocation";
+import getCurrentLocation from "@/lib/location";
 import { addFailedReport } from "@/lib/reportTaskService";
 import { Customer } from "@/types";
 import { useLocalSearchParams, useRouter } from "expo-router";

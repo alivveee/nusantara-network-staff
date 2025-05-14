@@ -20,7 +20,7 @@ export const readTodayRoute = async (
       *, 
       tasks:reports(
         task_id,
-        task_info:tasks(type, customer:customers(name, id, address)), 
+        task_info:tasks(type, customer:customers(name, id, address, coordinate)), 
         task_order,
         completed_at
       )

@@ -1,16 +1,18 @@
+import { navigateToCoordinate } from "@/lib/navigation";
 import { readTodayRoute } from "@/lib/reportTaskService";
 import { RouteTask } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
-import { RelativePathString, useRouter } from "expo-router";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { RelativePathString, Stack, useRouter } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Animated,
+  Dimensions,
   FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Animated,
-  Dimensions,
 } from "react-native";
 
 const { width } = Dimensions.get("window");
@@ -22,6 +24,7 @@ export default function Index() {
   const [runningTasks, setRunningTasks] = useState<RouteTask[]>([]);
   const [completedTasks, setCompletedTasks] = useState<RouteTask[]>([]);
   const [routeId, setRouteId] = useState<string>("");
+  const [activeDestination, setActiveDestination] = useState<string>("");
 
   const router = useRouter();
   // Animated value untuk slide effect
@@ -38,6 +41,7 @@ export default function Index() {
       setRouteId(data.id);
       setRunningTasks(data.running_task);
       setCompletedTasks(data.completed_task);
+      setActiveDestination(data.running_task[0]?.task_info.customer.coordinate);
     }
     setRefreshing(false);
   };
@@ -75,6 +79,10 @@ export default function Index() {
     });
   }
 
+  const navigateToActiveDestination = () => {
+    navigateToCoordinate(activeDestination);
+  };
+
   const renderItem = (item: RouteTask, isDisabled: boolean) => {
     const { type, customer } = item.task_info;
     const isDelivery = type === "pengiriman";
@@ -103,6 +111,20 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
+      {/* Header */}
+      <Stack.Screen
+        options={{
+          headerTitle: "Tugas",
+          headerRight: () => (
+            <TouchableOpacity
+              style={styles.locationButton}
+              onPress={navigateToActiveDestination}
+            >
+              <FontAwesome6 name="location-dot" size={22} color="#34495e" />
+            </TouchableOpacity>
+          ),
+        }}
+      />
       {/* Header Tabs */}
       <View style={styles.tabContainer}>
         <TouchableOpacity
@@ -253,5 +275,9 @@ const styles = StyleSheet.create({
     marginTop: 40,
     fontSize: 16,
     color: "#7f8c8d",
+  },
+  locationButton: {
+    padding: 10,
+    marginRight: 10,
   },
 });
