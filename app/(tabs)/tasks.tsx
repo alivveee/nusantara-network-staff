@@ -2,7 +2,7 @@ import { navigateToCoordinate } from "@/lib/navigation";
 import { readTodayRoute } from "@/lib/reportTaskService";
 import { RouteTask } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { RelativePathString, Stack, useRouter } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import {
@@ -120,7 +120,7 @@ export default function Index() {
               style={styles.locationButton}
               onPress={navigateToActiveDestination}
             >
-              <FontAwesome6 name="location-dot" size={22} color="#34495e" />
+              <FontAwesome5 name="route" size={22} color="#34495e" />
             </TouchableOpacity>
           ),
         }}
@@ -279,5 +279,12 @@ const styles = StyleSheet.create({
   locationButton: {
     padding: 10,
     marginRight: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  locationButtonText: {
+    fontSize: 14,
+    color: "#34495e",
+    marginTop: 4,
   },
 });

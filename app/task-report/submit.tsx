@@ -72,30 +72,6 @@ export default function SubmitReport() {
     }
   };
 
-  const handleSelectProduct = (product: {
-    value: string;
-    label: string;
-  }): void => {
-    const existingProduct = products.find((p) => p.id === product.value);
-
-    if (existingProduct) {
-      // Jika produk sudah ada, tambahkan quantity-nya
-      setProducts(
-        products.map((p) =>
-          p.id === product.value ? { ...p, quantity: p.quantity! + 1 } : p
-        )
-      );
-    } else {
-      // Jika produk belum ada, tambahkan dengan quantity 1
-      setProducts([
-        ...products,
-        { id: product.value, name: product.label, quantity: 1 },
-      ]);
-    }
-
-    setModalVisible(false);
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView style={styles.content}>

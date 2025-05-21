@@ -1,23 +1,21 @@
-import PickerField from "@/components/picker-field";
+import ProductSection from "@/components/products";
+import ProductSelectionModal from "@/components/products-modal";
 import TextField from "@/components/text-field";
+import { addCanvassingTask } from "@/lib/addTaskService";
 import { extractLocationFromGoogleMapsShortLink } from "@/lib/helper/extractLocation";
+import { Product } from "@/types";
+import { Ionicons } from "@expo/vector-icons";
 import Fontisto from "@expo/vector-icons/Fontisto";
+import * as Clipboard from "expo-clipboard";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import * as Clipboard from "expo-clipboard";
 import {
   Alert,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
-import ProductSection from "@/components/products";
-import { Product } from "@/types";
-import { Ionicons } from "@expo/vector-icons";
-import ProductSelectionModal from "@/components/products-modal";
-import { addCanvassingTask } from "@/lib/addTaskService";
 
 export default function Canvassing() {
   const [customerName, setCustomerName] = useState<string>("");

@@ -1,21 +1,20 @@
+import ProductSection from "@/components/products";
+import ProductSelectionModal from "@/components/products-modal";
 import TextField from "@/components/text-field";
+import { addDeliveryTask } from "@/lib/addTaskService";
+import { readCustomerById } from "@/lib/customerService";
+import { Customer, Product } from "@/types";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   Alert,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import CustomerPickerModal from "./customer-picker-modal";
-import { Customer, Product } from "@/types";
-import { readCustomerById } from "@/lib/customerService";
-import ProductSelectionModal from "@/components/products-modal";
-import ProductSection from "@/components/products";
-import { addDeliveryTask } from "@/lib/addTaskService";
 
 export default function Delivery() {
   const [modalCustomerVisible, setModalCustomerVisible] =

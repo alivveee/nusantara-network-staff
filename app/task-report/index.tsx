@@ -16,7 +16,7 @@ import {
 } from "react-native";
 
 const statusOptions = [
-  { label: "Berhasil", value: "selesai" },
+  { label: "Berhasil", value: "berhasil" },
   { label: "Gagal", value: "gagal" },
 ];
 

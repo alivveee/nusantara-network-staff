@@ -81,15 +81,3 @@ export const navigateToCoordinate = async (
   }
 };
 
-/**
- * Contoh penggunaan:
- *
- * // Dasar
- * navigateToCoordinate('-7.758113773966092, 113.22837119484377');
- *
- * // Dengan nama tujuan
- * navigateToCoordinate('-7.758113773966092, 113.22837119484377', 'Toko ABC');
- *
- * // Dengan mode perjalanan (berjalan kaki)
- * navigateToCoordinate('-7.758113773966092, 113.22837119484377', 'Toko ABC', 'w');
- */

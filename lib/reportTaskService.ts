@@ -1,5 +1,6 @@
-import { endOfToday, startOfToday } from "date-fns";
 import { Product, Route, RouteTask } from "@/types";
+import { endOfToday, startOfToday } from "date-fns";
+import { getNewDate } from "./helper/getNewDate";
 import { supabase } from "./supabase";
 
 type RouteWithStatus = Omit<Route, "tasks"> & {
@@ -102,7 +103,7 @@ export async function addReport(
     .update({
       note,
       recipient,
-      completed_at: new Date().toISOString(),
+      completed_at: getNewDate(),
       completed_coord: coords,
     })
     .match({ route_id, task_id });
@@ -148,7 +149,7 @@ export async function addFailedReport(
     .from("reports")
     .update({
       note,
-      completed_at: new Date().toISOString(),
+      completed_at: getNewDate(),
       completed_coord: coords,
     })
     .match({ route_id, task_id });
