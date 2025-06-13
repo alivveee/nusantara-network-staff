@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const statusOptions = [
   { label: "Berhasil", value: "berhasil" },
@@ -68,7 +69,7 @@ export default function Index() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["bottom"]}>
       <ScrollView style={styles.content}>
         <View style={styles.formContainer}>
           {/* Recipient Name */}
@@ -131,7 +132,7 @@ export default function Index() {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

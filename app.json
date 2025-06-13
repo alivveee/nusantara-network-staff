@@ -4,7 +4,7 @@
     "slug": "nusantara-network-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/nusantara-logo.png",
     "scheme": "nusantaranetworkmobile",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

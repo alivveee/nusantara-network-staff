@@ -7,13 +7,8 @@ import { Customer, Product } from "@/types";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import CustomerPickerModal from "./customer-picker-modal";
 
 export default function Delivery() {
@@ -63,7 +58,7 @@ export default function Delivery() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["bottom"]}>
       <View style={styles.content}>
         <View style={styles.formContainer}>
           {/* Customer Name */}
@@ -129,7 +124,7 @@ export default function Delivery() {
         onClose={() => setModalProductVisible(false)}
         onSelectProduct={setProducts}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -171,7 +166,7 @@ const styles = StyleSheet.create({
   fab: {
     position: "absolute",
     right: 20,
-    bottom: 90,
+    bottom: 140,
     width: 56,
     height: 56,
     borderRadius: 28,

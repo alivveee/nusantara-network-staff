@@ -1,7 +1,7 @@
-import { Tabs } from "expo-router";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Tabs } from "expo-router";
 
 export default function _Layout() {
   return (
@@ -17,6 +17,9 @@ export default function _Layout() {
         headerTitleStyle: {
           fontWeight: "bold",
         },
+      }}
+      safeAreaInsets={{
+        bottom: 80,
       }}
     >
       <Tabs.Screen

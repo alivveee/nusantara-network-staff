@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { StatusBar, Text, View } from "react-native";
-import { Session } from "@supabase/supabase-js";
 import Auth from "@/components/auth";
-import { useRouter } from "expo-router";
 import { supabase } from "@/lib/supabase";
+import { Session } from "@supabase/supabase-js";
+import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);

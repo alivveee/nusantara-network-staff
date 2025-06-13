@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ProductSection from "../../components/products";
 import ProductSelectionModal from "../../components/products-modal";
 
@@ -73,7 +74,7 @@ export default function SubmitReport() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["bottom"]}>
       <ScrollView style={styles.content}>
         {/* Recipient */}
         <View style={styles.formContainer}>
@@ -116,7 +117,7 @@ export default function SubmitReport() {
         onClose={() => setModalVisible(false)}
         onSelectProduct={setProducts}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
   fab: {
     position: "absolute",
     right: 20,
-    bottom: 90,
+    bottom: 140,
     width: 56,
     height: 56,
     borderRadius: 28,
