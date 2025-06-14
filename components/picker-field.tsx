@@ -1,14 +1,13 @@
+import { Picker } from "@react-native-picker/picker";
+import React from "react";
 import {
   Platform,
   StyleProp,
   StyleSheet,
   Text,
-  TextInput,
   TextStyle,
-  View,
+  View
 } from "react-native";
-import React, { useState } from "react";
-import { Picker } from "@react-native-picker/picker";
 
 interface TextFieldProps {
   label: string;
