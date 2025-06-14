@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/nusantara-logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.alifamukhtr.nusantaranetworkmobile"
     },
     "web": {
       "bundler": "metro",
@@ -42,7 +43,11 @@
     "extra": {
       "supabaseUrl": "https://vvqxnwedxbhmxkudibqg.supabase.co",
       "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2cXhud2VkeGJobXhrdWRpYnFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc2MjM4MzksImV4cCI6MjA1MzE5OTgzOX0.3O1huCpy98adxNQ6C2MgJ5gKzYMc8fYp8_WdYnVS9AU",
-      "googleMapsApiKey": "AIzaSyBKjBX9B_zcmtctaQtZaJV9whwxS_XlnT0"
+      "googleMapsApiKey": "AIzaSyBKjBX9B_zcmtctaQtZaJV9whwxS_XlnT0",
+      "router": {},
+      "eas": {
+        "projectId": "8c4f3ab1-e809-4668-b0d2-b571c3740834"
+      }
     }
   }
 }
