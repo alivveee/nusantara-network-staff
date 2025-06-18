@@ -23,7 +23,7 @@ export default function _Layout() {
       }}
     >
       <Tabs.Screen
-        name="tasks"
+        name="index"
         options={{
           title: "Tugas",
           tabBarIcon: ({ color }) => (

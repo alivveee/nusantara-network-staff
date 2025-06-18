@@ -53,7 +53,7 @@ export default function Delivery() {
       return;
     } else {
       Alert.alert("Sukses", "Tugas berhasil dibuat.");
-      router.replace("/(tabs)/tasks");
+      router.replace("/(tabs)");
     }
   };
 

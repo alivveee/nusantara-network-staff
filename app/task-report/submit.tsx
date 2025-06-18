@@ -62,7 +62,7 @@ export default function SubmitReport() {
       Alert.alert("Gagal", result.message || "Terjadi kesalahan");
     } else {
       Alert.alert("Berhasil", "Laporan berhasil ditambahkan!");
-      router.replace("/(tabs)/tasks");
+      router.replace("/(tabs)");
     }
   };
 

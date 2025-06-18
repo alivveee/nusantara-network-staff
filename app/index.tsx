@@ -18,7 +18,7 @@ export default function App() {
 
       // Jika sudah login, langsung arahkan ke tabs
       if (session?.user) {
-        router.replace("/(tabs)/tasks");
+        router.replace("/(tabs)");
       }
     });
 
@@ -27,7 +27,7 @@ export default function App() {
       (_event, session) => {
         setSession(session);
         if (session?.user) {
-          router.replace("/(tabs)/tasks");
+          router.replace("/(tabs)");
         }
       }
     );

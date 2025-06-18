@@ -64,7 +64,7 @@ export default function Index() {
       Alert.alert("Gagal", result.message || "Terjadi kesalahan");
     } else {
       Alert.alert("Berhasil", "Laporan berhasil ditambahkan!");
-      router.replace("/(tabs)/tasks");
+      router.replace("/(tabs)");
     }
   };
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   customerName: {
     fontSize: 18,
-    fontWeight: 600,
+    fontWeight: "600",
     marginBottom: 16,
   },
   footer: {

@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "nusantara-network-mobile",
+    "name": "NusantaraNet Staff",
     "slug": "nusantara-network-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/adaptive-icon.png",
     "scheme": "nusantaranetworkmobile",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -34,8 +34,7 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-font",
-      "expo-web-browser"
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

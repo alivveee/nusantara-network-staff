@@ -27,6 +27,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="nusantaranetworkmobile"/>
+        <data android:scheme="com.alifamukhtr.nusantaranetworkmobile"/>
         <data android:scheme="exp+nusantara-network-mobile"/>
       </intent-filter>
     </activity>

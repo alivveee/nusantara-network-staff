@@ -55,7 +55,7 @@ export default function Canvassing() {
 
     if (result.success) {
       Alert.alert("Berhasil", "Tugas berhasil ditambahkan.");
-      router.replace("/(tabs)/tasks");
+      router.replace("/(tabs)");
     } else {
       Alert.alert("Gagal", result.message || "Terjadi kesalahan");
     }
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   customerName: {
     fontSize: 18,
-    fontWeight: 600,
+    fontWeight: "600",
     marginBottom: 16,
   },
   footer: {
