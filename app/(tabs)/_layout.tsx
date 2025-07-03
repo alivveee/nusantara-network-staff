@@ -18,9 +18,6 @@ export default function _Layout() {
           fontWeight: "bold",
         },
       }}
-      safeAreaInsets={{
-        bottom: 80,
-      }}
     >
       <Tabs.Screen
         name="index"

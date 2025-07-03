@@ -1,22 +1,22 @@
+import { readProductOptions } from "@/lib/productService";
+import { Product } from "@/types";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
+  Animated,
   Modal,
   ScrollView,
-  Animated,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { Product } from "@/types";
-import { readProductOptions } from "@/lib/productService";
 
 interface ProductSelectionModalProps {
   visible: boolean;
   title?: string;
   onClose: () => void;
-  onSelectProduct: React.Dispatch<React.SetStateAction<Product[]>>;
+  onSelectProduct: (product: Product[]) => void;
   products: Product[];
   showDividers?: boolean;
 }

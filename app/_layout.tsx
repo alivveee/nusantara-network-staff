@@ -16,7 +16,6 @@ export default function RootLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="task-report" />
-      <Stack.Screen name="done-report" />
       <Stack.Screen name="add-task" />
     </Stack>
   );
