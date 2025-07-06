@@ -26,7 +26,6 @@ export async function addDeliveryTask(
   const taskProducts = products.map((product) => ({
     task_id: createTaskResult.id,
     product_id: product.id,
-    product_name: product.name,
     quantity: product.quantity,
   }));
 
@@ -102,7 +101,6 @@ export async function addCanvassingTask(
   const taskProducts = products.map((product) => ({
     task_id: createTaskResult.id,
     product_id: product.id,
-    product_name: product.name,
     quantity: product.quantity,
   }));
 
