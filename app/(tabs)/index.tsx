@@ -1,8 +1,9 @@
+import { useSession } from "@/context/SessionContext";
 import { navigateToCoordinate } from "@/lib/navigation";
 import { readTodayRoute } from "@/lib/reportTaskService";
 import { RouteTask } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { RelativePathString, Stack, useRouter } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import {
@@ -20,23 +21,25 @@ const { width } = Dimensions.get("window");
 export default function Index() {
   const [activeTab, setActiveTab] = useState("running");
   const [refreshing, setRefreshing] = useState(false);
-
   const [runningTasks, setRunningTasks] = useState<RouteTask[]>([]);
   const [completedTasks, setCompletedTasks] = useState<RouteTask[]>([]);
   const [routeId, setRouteId] = useState<string>("");
   const [activeDestination, setActiveDestination] = useState<string>("");
+
+  const { session, isLoading } = useSession();
 
   const router = useRouter();
   // Animated value untuk slide effect
   const slideAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    fetchTodayRoute();
-  }, []);
+    if (isLoading || !session) return;
+    fetchTodayRoute(session?.user.id);
+  }, [session, isLoading]);
 
-  const fetchTodayRoute = async () => {
+  const fetchTodayRoute = async (id: string) => {
     setRefreshing(true);
-    const data = await readTodayRoute("c02182f4-9397-4763-85fd-9f70725bcf70");
+    const data = await readTodayRoute(id);
     if (data) {
       setRouteId(data.id);
       setRunningTasks(data.running_task);
@@ -171,7 +174,7 @@ export default function Index() {
                 <Text style={styles.emptyText}>Tidak ada tugas berjalan</Text>
               }
               refreshing={refreshing}
-              onRefresh={fetchTodayRoute}
+              onRefresh={() => fetchTodayRoute(session?.user.id || "")}
             />
           </View>
 
@@ -186,7 +189,7 @@ export default function Index() {
                 <Text style={styles.emptyText}>Tidak ada tugas selesai</Text>
               }
               refreshing={refreshing}
-              onRefresh={fetchTodayRoute}
+              onRefresh={() => fetchTodayRoute(session?.user.id || "")}
             />
           </View>
         </Animated.View>
