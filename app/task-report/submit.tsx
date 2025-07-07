@@ -136,6 +136,7 @@ export default function SubmitReport() {
         onSelectProduct={setProducts}
       />
 
+      {/* Loading Indicator */}
       {loadingText !== "" && (
         <Modal transparent={true} visible>
           <View

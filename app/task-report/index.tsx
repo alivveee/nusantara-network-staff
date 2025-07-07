@@ -7,7 +7,9 @@ import { Customer } from "@/types";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
+  Modal,
   ScrollView,
   StyleSheet,
   Text,
@@ -26,6 +28,7 @@ export default function Index() {
   const [status, setStatus] = useState("berhasil");
   const [note, setNote] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
 
   const router = useRouter();
   const { taskId, customerId, routeId } = useLocalSearchParams<{
@@ -49,22 +52,43 @@ export default function Index() {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    const coords = await getCurrentLocation();
+    try {
+      setLoadingText?.("Mengambil lokasi...");
 
-    if (!coords) {
+      const coords = await getCurrentLocation();
+      if (!coords) {
+        Alert.alert(
+          "Gagal",
+          "Tidak bisa mendapatkan lokasi. Pastikan GPS aktif."
+        );
+        return;
+      }
+
+      setLoadingText?.("Mengirim laporan...");
+
+      const result = await addFailedReport(
+        taskId,
+        routeId,
+        note,
+        status,
+        coords
+      );
+
+      if (!result.success) {
+        Alert.alert(
+          "Gagal",
+          result.message || "Terjadi kesalahan saat mengirim laporan."
+        );
+      } else {
+        Alert.alert("Berhasil", "Laporan berhasil ditambahkan!");
+        router.replace("/(tabs)");
+      }
+    } catch (err) {
+      console.error("Submit Error:", err);
+      Alert.alert("Kesalahan", "Terjadi kesalahan tak terduga.");
+    } finally {
+      setLoadingText?.("");
       setIsSubmitting(false);
-      Alert.alert("Gagal", "Gagal mendapatkan lokasi. Pastikan GPS aktif.");
-      return;
-    }
-
-    const result = await addFailedReport(taskId, routeId, note, status, coords);
-    setIsSubmitting(false);
-
-    if (!result.success) {
-      Alert.alert("Gagal", result.message || "Terjadi kesalahan");
-    } else {
-      Alert.alert("Berhasil", "Laporan berhasil ditambahkan!");
-      router.replace("/(tabs)");
     }
   };
 
@@ -132,6 +156,30 @@ export default function Index() {
           </Text>
         </TouchableOpacity>
       </View>
+      {/* Loading Indicator */}
+      {loadingText !== "" && (
+        <Modal transparent={true} visible>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#00000055",
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "white",
+                padding: 20,
+                borderRadius: 10,
+              }}
+            >
+              <ActivityIndicator size="large" />
+              <Text style={{ marginTop: 10 }}>{loadingText}</Text>
+            </View>
+          </View>
+        </Modal>
+      )}
     </SafeAreaView>
   );
 }
