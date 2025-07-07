@@ -8,7 +8,9 @@ const getCurrentLocation = async () => {
     return null;
   }
 
-  const location = await Location.getCurrentPositionAsync({});
+  const location = await Location.getCurrentPositionAsync({
+    accuracy: Location.Accuracy.Balanced,
+  });
   const coords = {
     latitude: location.coords.latitude,
     longitude: location.coords.longitude,
